@@ -74,8 +74,14 @@ class _LandingScreenState extends State<LandingScreen> {
               SizedBox(
                 height: 16,
               ),
-              CustomButton(
-                buttonText: textLandingButton,
+              isCheckBoxTicked!? CustomBlueButton(
+                buttonText: textLandingButtonTakeTour,
+                onPressed: () {},
+                width: width,
+                height: 60,
+              ) : 
+              CustomWhiteButton(
+                buttonText: textLandingButtonSkip,
                 onPressed: () {},
                 width: width,
                 height: 60,

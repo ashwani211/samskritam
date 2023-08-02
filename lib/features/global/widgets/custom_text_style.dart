@@ -15,6 +15,7 @@ Widget CustomHeadingText({
       fontSize: fontSize?? 24,
       color: color?? null,
       fontWeight: fontWeight?? FontWeight.bold,
+      fontFamily: "Roboto",
     ),
   );
 }
@@ -31,6 +32,7 @@ Widget CustomText({
     style: TextStyle(
       fontSize: fontSize?? 18,
       color: color?? null,
+      fontFamily: "Roboto",
     ),
   );
 }
@@ -45,6 +47,45 @@ Widget CustomSmallText({
     style: TextStyle(
       fontSize: fontSize??14,
       color: color??customGreyColor,
+      fontFamily: "Roboto",
+    ),
+  );
+}
+
+Widget CustomBlueButtomText({
+  required String text,
+  double? fontSize,
+  Color? color,
+  TextAlign? textAlign,
+  FontWeight? fontWeight,
+}) {
+  return Text(
+    text,
+    textAlign: textAlign??null,
+    style: TextStyle(
+      fontSize: fontSize?? null,
+      color: color?? null,
+      fontWeight: fontWeight?? FontWeight.bold,
+      fontFamily: "Roboto",
+    ),
+  );
+}
+
+Widget CustomWhiteButtomText({
+  required String text,
+  double? fontSize,
+  Color? color,
+  TextAlign? textAlign,
+  FontWeight? fontWeight,
+}) {
+  return Text(
+    text,
+    textAlign: textAlign??null,
+    style: TextStyle(
+      fontSize: fontSize?? null,
+      color: color?? customGreyColor,
+      fontWeight: fontWeight?? FontWeight.bold,
+      fontFamily: "Roboto",
     ),
   );
 }

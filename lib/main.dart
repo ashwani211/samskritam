@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:samskritam/features/global/config/colors.dart';
 import 'package:samskritam/mobile_layout.dart';
 
 void main() {
@@ -8,17 +9,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Samskritam',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: customPrimaryColor),
         useMaterial3: true,
       ),
-      home: const MobileLayout(title: 'Flutter Demo Home Page'),
+      home: const MobileLayout(title: 'Samskritam'),
     );
   }
 }

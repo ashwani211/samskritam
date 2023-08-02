@@ -8,4 +8,7 @@ String textLandingAppDescription = "Welcome to our app. With this app, we are tr
 
 String textLandingChoice = "I wish to skip the sample class";
 
-String textLandingButton = "Take a sample tour";
+String textLandingButtonTakeTour = "Take a sample tour";
+
+String textLandingButtonSkip = "Skip";
+
