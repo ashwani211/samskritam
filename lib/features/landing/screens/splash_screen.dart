@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:samskritam/common/widgets/custom_images.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({
@@ -14,8 +15,8 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/icon/sublogo.png"),
-              SizedBox(height: 120,)
+              CustomImageSubLOGO(),
+              SizedBox(height: 84,)
             ],
           ),
         ),

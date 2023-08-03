@@ -12,3 +12,5 @@ String textLandingButtonTakeTour = "Take a sample tour";
 
 String textLandingButtonSkip = "Skip";
 
+String textErrorTitle = "Some error has occured!";
+

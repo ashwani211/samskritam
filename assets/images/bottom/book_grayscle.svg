@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48.652023mm"
+   height="49.872406mm"
+   viewBox="0 0 48.652023 49.872406"
+   version="1.1"
+   id="svg5"
+   xml:space="preserve"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="ui_grayscale.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.1706405"
+     inkscape:cx="724.81687"
+     inkscape:cy="590.27514"
+     inkscape:window-width="1440"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" /><defs
+     id="defs2" /><path
+     id="path3025"
+     style="opacity:1;fill:#808080;fill-opacity:0.980392;stroke:#808080;stroke-width:3.94544;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:markers stroke fill"
+     d="M 12.947855,11.96772 C 9.5583154,11.91152 5.7397754,12.76765 1.9727254,15.50761 v 32.39225 c 10.9586996,-7.97081 22.3532796,0 22.3532796,0 V 15.50761 c 0,0 -4.9072,-3.43261 -11.37815,-3.53989 z m 22.75631,0 c 3.38954,-0.0562 7.20808,0.79993 10.97513,3.53989 v 32.39225 c -10.9587,-7.97081 -22.35329,0 -22.35329,0 V 15.50761 c 0,0 4.90721,-3.43261 11.37816,-3.53989 z"
+     sodipodi:nodetypes="sccccs" /><path
+     id="path3027"
+     style="opacity:1;fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:3.68879;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:markers stroke fill"
+     d="m 14.619905,8.1104999 c -3.02928,-0.055 -6.4419596,0.78239 -9.8086196,3.4623301 v 29.8705 C 15.447115,37.20182 21.888825,41.34973 21.888825,41.34973 V 11.29215 c 0,0 -1.48575,-3.0767801 -7.26892,-3.1817001 z"
+     sodipodi:nodetypes="sccccs" /><path
+     id="path3029"
+     style="display:inline;opacity:0.961403;fill:#999999;fill-opacity:1;stroke:#999999;stroke-width:3.68879;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:markers stroke fill"
+     d="m 34.904115,10.13637 c 3.02928,-0.055 5.50651,-0.7143101 8.87318,1.96563 v 29.34133 c -10.63584,-4.24151 -17.07755,-0.0936 -17.07755,-0.0936 V 11.82132 c 0,0 2.4212,-1.58007 8.20437,-1.685 z"
+     sodipodi:nodetypes="sccccs"
+     inkscape:label="right page" /><path
+     id="path3031"
+     style="display:inline;opacity:1;fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:3.68879;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:markers stroke fill"
+     d="M 40.222605,1.8442199 V 33.5856 l -13.52286,7.76418 V 11.2922 Z"
+     sodipodi:nodetypes="ccccc"
+     inkscape:label="right page" /></svg>

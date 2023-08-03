@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/features/global/config/constant_texts.dart';
-import 'package:samskritam/features/global/widgets/custom_button.dart';
-import 'package:samskritam/features/global/widgets/custom_text_style.dart';
+import 'package:samskritam/common/config/constant_texts.dart';
+import 'package:samskritam/common/widgets/custom_button.dart';
+import 'package:samskritam/common/widgets/custom_text_style.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({
@@ -45,11 +45,10 @@ class _LandingScreenState extends State<LandingScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.only(left:28.0, right: 28),
+                    padding: const EdgeInsets.only(left: 28.0, right: 28),
                     child: CustomText(
-                      text: textLandingAppDescription,
-                      textAlign: TextAlign.justify
-                    ),
+                        text: textLandingAppDescription,
+                        textAlign: TextAlign.justify),
                   ),
                 ),
               ),
@@ -57,7 +56,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 height: 28,
               ),
               Padding(
-                padding: const EdgeInsets.only(left:22.0, right: 24),
+                padding: const EdgeInsets.only(left: 22.0, right: 24),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -67,25 +66,29 @@ class _LandingScreenState extends State<LandingScreen> {
                         isCheckBoxTicked = onChanged;
                       }),
                     ),
-                    CustomSmallText(text: textLandingChoice),
+                    InkWell(
+                      onTap: () =>setState(() {
+                        isCheckBoxTicked = !isCheckBoxTicked!;
+                      }),
+                      child: CustomSmallText(text: textLandingChoice),
+                    ),
                   ],
                 ),
               ),
               SizedBox(
                 height: 16,
               ),
-              isCheckBoxTicked!? CustomBlueButton(
-                buttonText: textLandingButtonTakeTour,
-                onPressed: () {},
-                width: width,
-                height: 60,
-              ) : 
-              CustomWhiteButton(
-                buttonText: textLandingButtonSkip,
-                onPressed: () {},
-                width: width,
-                height: 60,
-              ),
+              isCheckBoxTicked!
+                  ? CustomWhiteButton(
+                      buttonText: textLandingButtonSkip,
+                      onPressed: () {},
+                      width: width,
+                    )
+                  : CustomBlueButton(
+                      buttonText: textLandingButtonTakeTour,
+                      onPressed: () {},
+                      width: width,
+                    ),
               SizedBox(
                 height: 40,
               ),
