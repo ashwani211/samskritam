@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:samskritam/common/config/apptheme/colors.dart';
 import 'package:samskritam/mobile_layout.dart';
 import 'package:samskritam/router.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+
+  // get stored app theme (dark mode/light mode)
+  await GetStorage.init("currTheme");
+  
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Samskritam',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: customPrimaryColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: customPrimaryBlueColor),
         useMaterial3: true,
       ),
       onGenerateRoute: generateRoute,

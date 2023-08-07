@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
+import 'package:samskritam/common/config/apptheme/colors.dart';
+import 'package:samskritam/common/widgets/custom_images.dart';
 import 'package:samskritam/common/widgets/custom_text_style.dart';
 
 Widget CustomButton({
@@ -35,7 +36,7 @@ Widget CustomBlueButton({
     onPressed: onPressed,
     style: ButtonStyle(
       backgroundColor:
-          MaterialStatePropertyAll(backgroundColor ?? customPrimaryColor),
+          MaterialStatePropertyAll(backgroundColor ?? customPrimaryBlueColor),
       minimumSize: MaterialStatePropertyAll(Size(width ?? 50, height ?? 60)),
     ),
     child: CustomBlueButtomText(
@@ -81,7 +82,7 @@ Widget CustomBlueUpgradeButton({
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor:
-            MaterialStatePropertyAll(backgroundColor ?? customPrimaryColor),
+            MaterialStatePropertyAll(backgroundColor ?? customPrimaryBlueColor),
         minimumSize: MaterialStatePropertyAll(Size(width ?? 50, height ?? 60)),
       ),
       child: SizedBox(
@@ -92,10 +93,7 @@ Widget CustomBlueUpgradeButton({
             SizedBox(
               width: 28,
               height: 28,
-              child: Icon(
-                Icons.kitesurfing_sharp,
-                color: Colors.yellow,
-              ),
+              child: CustomCrownImage(),
             ),
             CustomBlueButtomText(
               text: buttonText,

@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
+import 'package:samskritam/common/config/apptheme/colors.dart';
 
 Widget CustomEditText({
   double? height,
   double? width,
   required TextEditingController? controller,
-  required FocusNode? focus,
+  FocusNode? focus,
   bool? isPasswordhidden,
   bool? isValueCorrect,
   Color? cursorColor,
   TextInputType? keyboardType,
   Function()? onClickOnVisible,
   String? hintText,
+  bool? isEnabled,
+  bool? isReadOnly
 }) {
   return SizedBox(
     height: height ?? 50,
     width: width ?? 300,
     child: TextField(
+      enabled: isEnabled,
+      readOnly: isReadOnly??false,
+      // enableInteractiveSelection: isEnabled,
       controller: controller,
-      focusNode: focus!,
+      focusNode: focus,
       style: TextStyle(),
       obscureText: isPasswordhidden?? false,
-      cursorColor: cursorColor ?? null,
-      keyboardType: TextInputType.name,
+      cursorColor: cursorColor,
+      keyboardType: keyboardType?? TextInputType.name,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.only(left: 20, right: 16),
-        hintText: "Name",
-        suffixIcon: Padding(
+        contentPadding: EdgeInsets.only(left: 20, right: 20),
+        hintText: hintText?? "Name",
+        suffixIcon:(isPasswordhidden == null && isValueCorrect == null)? null : Padding(
           padding: const EdgeInsets.only(right: 4.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -39,7 +44,7 @@ Widget CustomEditText({
                 ),
               ) : SizedBox(),
               (isValueCorrect!=null) ? IconButton(
-                onPressed: onClickOnVisible,
+                onPressed: (){},
                 icon: Icon(
                   isValueCorrect
                       ? Icons.check_circle_rounded
@@ -55,6 +60,12 @@ Widget CustomEditText({
             Radius.circular(32),
           ),
         ),
+        // disabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.all(
+        //     Radius.circular(32),
+            
+        //   ),
+        // ),
       ),
     ),
   );

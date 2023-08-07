@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
+import 'package:samskritam/common/config/apptheme/colors.dart';
 import 'package:samskritam/common/widgets/custom_button.dart';
 import 'package:samskritam/common/widgets/custom_images.dart';
+import 'package:samskritam/common/widgets/custom_text_editing.dart';
 import 'package:samskritam/common/widgets/custom_text_style.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -20,6 +21,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isPasswordhidden = true;
 
+  void changePasswordHidden() {
+    setState(() {
+      isPasswordhidden = !isPasswordhidden;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +35,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
     emailController = TextEditingController();
     passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+
+    focus?.dispose();
+    
+    emailController?.dispose();
+    passwordController?.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -50,62 +68,26 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              CustomEditText(
                 width: 300,
                 height: 50,
-                child: TextField(
-                  controller: emailController!,
-                  focusNode: focus!,
-                  style: TextStyle(),
-                  cursorColor: customPrimaryColor,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 20, right: 20),
-                    hintText: "email",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32),
-                      ),
-                    ),
-                  ),
-                ),
+                controller: emailController,
+                focus: focus,
+                hintText: "email",
+                keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              CustomEditText(
                 width: 300,
                 height: 50,
-                child: TextField(
-                  controller: passwordController!,
-                  focusNode: focus!,
-                  style: TextStyle(),
-                  cursorColor: customPrimaryColor,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: isPasswordhidden,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 20, right: 20),
-                    hintText: "password",
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.only(right: 4.0),
-                      child: IconButton(
-                        onPressed: () => setState(() {
-                          isPasswordhidden = !isPasswordhidden;
-                        }),
-                        icon: Icon(
-                          isPasswordhidden
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                        ),
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32),
-                      ),
-                    ),
-                  ),
-                ),
+                controller: passwordController,
+                focus: focus,
+                hintText: "password",
+                keyboardType: TextInputType.visiblePassword,
+                isPasswordhidden: isPasswordhidden,
+                onClickOnVisible: changePasswordHidden,
               ),
               SizedBox(
                 height: 20,
@@ -153,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomSmallText(text: "Don't have an account? "),
-                    CustomSmallText(text: "Sign up", color: customPrimaryColor)
+                    CustomSmallText(text: "Sign up", color: customPrimaryBlueColor)
                   ],
                 ),
               ),

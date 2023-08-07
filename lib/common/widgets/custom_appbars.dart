@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
+import 'package:samskritam/common/config/apptheme/colors.dart';
 import 'package:samskritam/common/widgets/custom_text_style.dart';
 
-PreferredSizeWidget customWhiteAppbar({
+PreferredSizeWidget CustomWhiteAppbar({
   required String title,
   bool? isCenterTitle,
   double? fontSize,
@@ -15,7 +15,7 @@ PreferredSizeWidget customWhiteAppbar({
         onPressed: () {},
         icon: Icon(
           Icons.edit_rounded,
-          color: customPrimaryColor,
+          color: customPrimaryBlueColor,
         ),
       )
     ],

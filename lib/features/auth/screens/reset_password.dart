@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
+import 'package:samskritam/common/config/apptheme/colors.dart';
 import 'package:samskritam/common/widgets/custom_button.dart';
 import 'package:samskritam/common/widgets/custom_images.dart';
+import 'package:samskritam/common/widgets/custom_text_editing.dart';
 import 'package:samskritam/common/widgets/custom_text_style.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -31,6 +32,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
 
   @override
+  void dispose() {
+    focus?.dispose();
+    emailController?.dispose();
+    passwordController?.dispose();
+
+    super.dispose();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Center(
@@ -50,25 +61,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              CustomEditText(
                 width: 300,
                 height: 50,
-                child: TextField(
-                  controller: emailController!,
-                  focusNode: focus!,
-                  style: TextStyle(),
-                  cursorColor: customPrimaryColor,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 20, right: 20),
-                    hintText: "email",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32),
-                      ),
-                    ),
-                  ),
-                ),
+                controller: emailController,
+                focus: focus,
+                hintText: "email",
+                keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(
                 height: 20,
@@ -79,19 +78,23 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 buttonText: "Login",
                 onPressed: () {},
               ),
-              SizedBox(height: 24,),
+              SizedBox(
+                height: 24,
+              ),
               InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,       
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomSmallText(text: "Don't want to reset password? "),
-                    CustomSmallText(text: "Sign in", color: customPrimaryColor)
+                    CustomSmallText(text: "Sign in", color: customPrimaryBlueColor)
                   ],
                 ),
               ),
-              SizedBox(height: 24,)
+              SizedBox(
+                height: 24,
+              )
             ],
           ),
         ),

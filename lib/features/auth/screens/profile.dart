@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/colors.dart';
 import 'package:samskritam/common/widgets/custom_appbars.dart';
 import 'package:samskritam/common/widgets/custom_button.dart';
-import 'package:samskritam/common/widgets/custom_images.dart';
 import 'package:samskritam/common/widgets/custom_text_editing.dart';
 import 'package:samskritam/common/widgets/custom_text_style.dart';
 import 'package:samskritam/common/widgets/profile_pic.dart';
@@ -16,10 +14,11 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  FocusNode? focus;
 
+  TextEditingController? nameController;
+  TextEditingController? usernameController;
   TextEditingController? emailController;
-  TextEditingController? passwordController;
+  TextEditingController? phonecontroller;
 
   bool isPasswordhidden = true;
 
@@ -33,16 +32,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
 
-    focus = FocusNode();
-
+    nameController = TextEditingController();
+    usernameController = TextEditingController();
     emailController = TextEditingController();
-    passwordController = TextEditingController();
+    phonecontroller = TextEditingController();
+    
+  }
+
+  @override
+  void dispose() {
+
+    nameController?.dispose();
+    usernameController?.dispose();
+    emailController?.dispose();
+    phonecontroller?.dispose();
+
+    super.dispose();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customWhiteAppbar(title: "Profile", fontSize: 16),
+      appBar: CustomWhiteAppbar(title: "Profile", fontSize: 16),
       body: SingleChildScrollView(
         child: SizedBox(
           width: double.infinity,
@@ -68,44 +80,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CustomEditText(
                     width: 340,
                     height: 50,
-                    isValueCorrect: true,
-                    controller: emailController,
-                    focus: focus,
-                    onClickOnVisible: changePasswordHidden
-                  ),
-                  SizedBox(
-                    width: 340,
-                    height: 50,
-                    child: TextField(
-                      controller: emailController!,
-                      focusNode: focus!,
-                      style: TextStyle(),
-                      cursorColor: customPrimaryColor,
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 20, right: 20),
-                        hintText: "Name",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              isPasswordhidden
-                                  ? Icons.check_circle_rounded
-                                  : Icons.cancel_rounded,
-                              color: isPasswordhidden
-                                  ? customGreenColor
-                                  : customRedColor,
-                            ),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(32),
-                          ),
-                        ),
-                      ),
-                    ),
+                    isValueCorrect: isPasswordhidden,
+                    controller: nameController,
+                    onClickOnVisible: changePasswordHidden,
+                    hintText: "Name",
                   ),
                   SizedBox(
                     height: 10,
@@ -115,41 +93,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 28,
                     child: CustomSmallText(text: "Username"),
                   ),
-                  SizedBox(
+                  CustomEditText(
                     width: 340,
                     height: 50,
-                    child: TextField(
-                      controller: emailController!,
-                      focusNode: focus!,
-                      style: TextStyle(),
-                      cursorColor: customPrimaryColor,
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 20, right: 20),
-                        hintText: "Username",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: IconButton(
-                            onPressed: () => setState(() {
-                              isPasswordhidden = !isPasswordhidden;
-                            }),
-                            icon: Icon(
-                              isPasswordhidden
-                                  ? Icons.check_circle_rounded
-                                  : Icons.cancel_rounded,
-                              color: isPasswordhidden
-                                  ? customGreenColor
-                                  : customRedColor,
-                            ),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(32),
-                          ),
-                        ),
-                      ),
-                    ),
+                    isValueCorrect: isPasswordhidden,
+                    controller: usernameController,
+                    onClickOnVisible: changePasswordHidden,
+                    hintText: "Username",
                   ),
                   SizedBox(
                     height: 10,
@@ -159,41 +109,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 28,
                     child: CustomSmallText(text: "Email"),
                   ),
-                  SizedBox(
+                  CustomEditText(
                     width: 340,
                     height: 50,
-                    child: TextField(
-                      controller: emailController!,
-                      focusNode: focus!,
-                      style: TextStyle(),
-                      cursorColor: customPrimaryColor,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 20, right: 20),
-                        hintText: "Email",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: IconButton(
-                            onPressed: () => setState(() {
-                              isPasswordhidden = !isPasswordhidden;
-                            }),
-                            icon: Icon(
-                              isPasswordhidden
-                                  ? Icons.check_circle_rounded
-                                  : Icons.cancel_rounded,
-                              color: isPasswordhidden
-                                  ? customGreenColor
-                                  : customRedColor,
-                            ),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(32),
-                          ),
-                        ),
-                      ),
-                    ),
+                    isValueCorrect: isPasswordhidden,
+                    controller: emailController,
+                    onClickOnVisible: changePasswordHidden,
+                    hintText: "Email",
+                    keyboardType: TextInputType.emailAddress,
+                    isReadOnly: true,
                   ),
                   SizedBox(
                     height: 10,
@@ -203,41 +127,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 28,
                     child: CustomSmallText(text: "Phone"),
                   ),
-                  SizedBox(
+                  CustomEditText(
                     width: 340,
                     height: 50,
-                    child: TextField(
-                      controller: emailController!,
-                      focusNode: focus!,
-                      style: TextStyle(),
-                      cursorColor: customPrimaryColor,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 20, right: 20),
-                        hintText: "Phone",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: IconButton(
-                            onPressed: () => setState(() {
-                              isPasswordhidden = !isPasswordhidden;
-                            }),
-                            icon: Icon(
-                              isPasswordhidden
-                                  ? Icons.check_circle_rounded
-                                  : Icons.cancel_rounded,
-                              color: isPasswordhidden
-                                  ? customGreenColor
-                                  : customRedColor,
-                            ),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(32),
-                          ),
-                        ),
-                      ),
-                    ),
+                    isValueCorrect: isPasswordhidden,
+                    controller: phonecontroller,
+                    onClickOnVisible: changePasswordHidden,
+                    hintText: "Phone",
+                    keyboardType: TextInputType.phone,
+                    isReadOnly: true,
                   ),
                   SizedBox(
                     height: 40,

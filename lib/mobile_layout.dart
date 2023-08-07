@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/features/auth/screens/profile.dart';
+import 'package:samskritam/common/widgets/custom_bottom_navigationbars.dart';
+import 'package:samskritam/features/lessons/screens/lessons_screen.dart';
 
-class MobileLayout extends StatelessWidget {
+class MobileLayout extends StatefulWidget {
   const MobileLayout({super.key, required this.title});
 
   final String title;
 
   @override
+  State<MobileLayout> createState() => _MobileLayoutState();
+}
+
+class _MobileLayoutState extends State<MobileLayout> {
+  int currentIndex = 0;
+
+  void changeIndex(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ProfileScreen(),
+        child: LessonsScreen(),
+        // child: ProfileScreen(),
         // child: ResetPasswordScreen(),
-        // child: LoginScreen(),
+        // child: SignupScreen(),
         // child: InternetErrorScreen(),
         // child: UpdateScreen(
         //   title: "New version available!",
@@ -29,6 +44,11 @@ class MobileLayout extends StatelessWidget {
         // child: ErrorScreen(title: textErrorTitle ,error: "Some Error",),
         // child: LandingScreen(),
         // child: SplashScreen(),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: currentIndex,
+        isDisplayingMessage: true,
+        onNavigationTapped: changeIndex,
       ),
     );
   }
