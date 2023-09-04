@@ -1,16 +1,48 @@
-# samskritam
+# Samskritam
 
-A new Flutter project.
+A language learning app to learn Sankrit language efficiently. Unlock the knowledge of Sanskrit with Samskritam, designed to make Sanskrit learning effortless.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Intuitive and Interactive learning
+- Priority on Comprehension
+- Gamified Learning
+- Progress Tracking
+- Cultural Insights
+- Dictionary
+- Leaderboard
+- Community and Support
+## Tech Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Server**: Firebase Auth, Firebase Storage, Firebase Firestore, Cloud Messaging
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Client**: Flutter, Riverpod
+
+## FAQ
+
+#### What is the use of the app?
+
+It is a language learning app for learning Sanskrit.
+
+#### Why should we Sanskrit?
+
+Sanskrit learning has many benefits: 
+- Promotes brain development
+- Sanskrit facilitates the study of other languages
+- Helps to find connection between different languages
+- Opens the gateway to ancient knowledge written in ancient text
+- Offers rich cultural insights into stories and traditions
+
+#### From where can I download the app?
+
+The app is currently in development phase. Soon to be released on Google Play Store.
+
+
+## Author
+
+- [Ashwani Kumar Singh](https://github.com/ashwani211)
+## Feedback
+
+If you have any feedback, please reach out to us at ashwanikumarsingh.varanasi@gmail.com
+
