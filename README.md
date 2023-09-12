@@ -1,6 +1,6 @@
 # Samskritam
 
-A language learning app to learn Sankrit language efficiently. Unlock the knowledge of Sanskrit with Samskritam, designed to make Sanskrit learning effortless.
+A language learning app designed to learn Sanskrit language efficiently. Unlock the knowledge of Sanskrit with Samskritam, designed to make Sanskrit learning effortless.
 
 ![1](https://github.com/ashwani211/samskritam/assets/48960517/f962172b-14f4-4d2d-b4ab-5ab79d39134b)
 
