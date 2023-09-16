@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/apptheme/colors.dart';
+import 'package:samskritam/common/config/apptheme/theme_colors.dart';
 import 'package:samskritam/common/widgets/custom_button.dart';
 import 'package:samskritam/common/widgets/custom_images.dart';
 import 'package:samskritam/common/widgets/custom_text_editing.dart';

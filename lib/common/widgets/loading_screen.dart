@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:samskritam/common/config/apptheme/colors.dart';
+import 'package:samskritam/common/config/apptheme/theme_colors.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({Key? key}) : super(key: key);

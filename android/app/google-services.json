@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "350645870887",
+    "project_id": "vaidushyam-samskritam",
+    "storage_bucket": "vaidushyam-samskritam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350645870887:android:09c4d076e7971517570902",
+        "android_client_info": {
+          "package_name": "com.vaidushyam.samskritam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM4c_aXUB84aaqe_jHsL0UShh4z8BUexs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/apptheme/colors.dart';
+import 'package:samskritam/common/config/apptheme/theme_colors.dart';
 
 Widget CustomHeadingText({
   required String text,

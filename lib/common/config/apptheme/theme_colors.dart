@@ -13,6 +13,8 @@ Color customDullWhite = Color(0xFFEEEEEE);
 
 
 Color customPrimaryBlueColor = Color(0xFF79A4F1);
+Color customLightBlueColor = Color(0xFF9CBEFF);
+
 Color customGreenColor = Color(0xFF77D59D);
 Color customRedColor = Color(0xFFEE6161);
 Color customBrownColor = Color(0xFF975D2E);

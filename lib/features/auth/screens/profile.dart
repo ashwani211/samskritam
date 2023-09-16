@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomWhiteAppbar(title: "Profile", fontSize: 16),
+      appBar: CustomWhiteAppbar(title: "Profile", fontSize: 18),
       body: SingleChildScrollView(
         child: SizedBox(
           width: double.infinity,

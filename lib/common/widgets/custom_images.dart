@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:samskritam/common/config/apptheme/colors.dart';
+import 'package:samskritam/common/config/apptheme/theme_colors.dart';
 
 Widget AnyCustomImage({double? width, double? height, required Widget child, EdgeInsetsGeometry? padding}){
   return Padding(
@@ -124,3 +124,18 @@ Widget CustomUnselectedDictionaryImage() {
   return Image.asset("assets/images/bottom_nav/dictionary_grayscale.png");
 }
 
+Widget CustomNotificationImage() {
+  return Image.asset("assets/images/appbar/bell.png");
+}
+
+Widget CustomChakraImage() {
+  return Image.asset("assets/images/appbar/chakra.png");
+}
+
+Widget CustomLotusImage() {
+  return Image.asset("assets/images/appbar/lotus.png");
+}
+
+Widget CustomBagImage() {
+  return Image.asset("assets/images/appbar/buy.png");
+}
