@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samskritam/common/widgets/custom_bottom_navigationbars.dart';
-import 'package:samskritam/features/lessons/screens/lessons_screen.dart';
+
+import 'features/lessons/screens/lessons_homescreen.dart';
 
 class MobileLayout extends StatefulWidget {
   const MobileLayout({super.key, required this.title});
@@ -24,7 +25,7 @@ class _MobileLayoutState extends State<MobileLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: LessonsScreen(),
+        child: LessonsHomeScreen(),
         // child: ProfileScreen(),
         // child: ResetPasswordScreen(),
         // child: SignupScreen(),

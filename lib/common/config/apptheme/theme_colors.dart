@@ -20,3 +20,6 @@ Color customRedColor = Color(0xFFEE6161);
 Color customBrownColor = Color(0xFF975D2E);
 Color customBrownColorDark = Color.fromARGB(255, 99, 61, 30);
 
+Color customBhagwa = Colors.orange;
+Color customBhagwaLight = Colors.amber;
+

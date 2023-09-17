@@ -110,3 +110,94 @@ Widget CustomBlueUpgradeButton({
         ),
       ));
 }
+
+Widget sliderButton({required double value, required int divisions, required Function(double)? onChanged, required BuildContext context}){
+    return SliderTheme(
+    data: SliderTheme.of(context).copyWith(
+      trackHeight: 18.0,
+      activeTrackColor: customBhagwa,
+      inactiveTrackColor: customDullWhite,
+      thumbShape: const RoundSliderThumbShape(
+        // enabledThumbRadius: 14.0,
+        pressedElevation: 0,
+        elevation: 0,
+      ),
+      thumbColor: customBhagwa,
+      overlayColor: Colors.pink.withOpacity(0),
+      // overlayShape: RoundSliderOverlayShape(overlayRadius: 32.0),
+      tickMarkShape: RoundSliderTickMarkShape(),
+      activeTickMarkColor: customBhagwaLight,
+      inactiveTickMarkColor: customDullWhite,
+      // valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+      // valueIndicatorColor: Colors.black,
+      // valueIndicatorTextStyle: TextStyle(
+      //   color: Colors.white,
+      //   fontSize: 20.0,
+      // ),
+    ),
+    child: Slider(
+      min: 0.0,
+      max: 100.0,
+      value: value,
+      divisions: divisions,
+      // label: '${value.round()}',
+      onChanged: onChanged,
+    ),
+  );
+}
+
+Widget myElevatedButton({required Function()? onPressed, 
+required String text, required BuildContext context, 
+Color? backgroundColor, Color? iconColor, 
+double? width, double? height, double? iconSize, double? fontSize,
+double? borderRadius }){
+
+  // ElevatedButtonTheme(data: data, child: child
+  double screenWidth = MediaQuery.of(context).size.width;
+
+  return ElevatedButton(
+    onPressed: onPressed, 
+    style: ButtonStyle(
+      minimumSize: MaterialStatePropertyAll(Size(width??screenWidth, height??100)),
+      backgroundColor: MaterialStatePropertyAll(backgroundColor??customPrimaryBlueColor),
+      // iconColor: MaterialStatePropertyAll(iconColor??whitestonecolor),
+      iconSize: MaterialStatePropertyAll(iconSize??40),
+      // overlayColor: MaterialStatePropertyAll(Colors.amber)
+      // surfaceTintColor: MaterialStatePropertyAll(Colors.red),
+      // shadowColor: MaterialStatePropertyAll(Colors.red),
+      foregroundColor: MaterialStatePropertyAll(Colors.grey[100]),
+      textStyle: MaterialStatePropertyAll(TextStyle(fontSize: fontSize??40,)),
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius??4) ))
+    ),
+    child: Text(text),
+  );
+
+}
+
+Widget listenToAudioButton({required Function()? onPressed, 
+required Widget icon, required BuildContext context, 
+Color? backgroundColor, Color? iconColor, 
+double? width, double? height, double? iconSize}){
+
+  // ElevatedButtonTheme(data: data, child: child
+
+  return ElevatedButton(
+    onPressed: onPressed, 
+    style: ButtonStyle(
+      minimumSize: MaterialStatePropertyAll(Size(width??100, height??100)),
+      backgroundColor: MaterialStatePropertyAll(backgroundColor??customPrimaryBlueColor),
+      iconColor: MaterialStatePropertyAll(iconColor??Colors.grey[100]),
+      iconSize: MaterialStatePropertyAll(iconSize??40),
+      // overlayColor: MaterialStatePropertyAll(Colors.amber)
+      surfaceTintColor: MaterialStatePropertyAll(Colors.red),
+      shadowColor: MaterialStatePropertyAll(Colors.red),
+      // foregroundColor: MaterialStatePropertyAll(Colors.red),
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
+    ),
+    child: icon,
+  );
+
+}
+
+
+
