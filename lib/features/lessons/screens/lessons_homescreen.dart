@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -57,6 +58,7 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
       body: Column(
         children: [
           CustomLowerAppBar(),
+          SizedBox(height: 24,),
           Expanded(
             child: StreamBuilder(
               stream: ref.read(lessonControllerProvider).getLessons(),
@@ -129,6 +131,8 @@ List<Widget> lessonTile(List<LessonInfo>? lessons, List? completedLessons,
   return ite;
 }
 
+
+
 Widget lessonImage(LessonInfo? lessonData, Function() onPressed,
     BuildContext context, bool isCompletedLesson) {
   if (lessonData == null) {
@@ -139,16 +143,12 @@ Widget lessonImage(LessonInfo? lessonData, Function() onPressed,
     return SizedBox(
       width: 200,
       height: 200,
-      child: Image.network(
-        lessonData.imageUrl!,
-      ),
+      child: CachedNetworkImage(imageUrl: lessonData.imageUrl!),
     );
   } else {
     return InkWell(
       onTap: () {
-        // Navigator.pushNamedAndRemoveUntil(
-        //     context, "/learnlesson", (route) => false,
-        //     arguments: {"data": lessonData["lessons"]});
+        print("test");
       },
       child: Opacity(
         opacity: isCompletedLesson ? .5 : 1,
@@ -159,17 +159,18 @@ Widget lessonImage(LessonInfo? lessonData, Function() onPressed,
             children: [
               Expanded(
                 child: ClipOval(
-                  child: Image.network(lessonData.imageUrl.toString()),
+                  child: CachedNetworkImage(imageUrl: lessonData.imageUrl.toString()),
                 ),
               ),
               const SizedBox(
                 height: 4,
               ),
-              Text(lessonData.name!),
+              Text(lessonData.name!, style: TextStyle(fontFamily: "Samskrit"),),
             ],
           ),
         ),
       ),
     );
   }
+  
 }
