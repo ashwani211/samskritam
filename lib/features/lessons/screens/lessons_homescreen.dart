@@ -7,7 +7,8 @@ import 'package:samskritam/common/widgets/custom_appbars.dart';
 import 'package:samskritam/common/widgets/loading_screen.dart';
 import 'package:samskritam/common/widgets/profile_pic.dart';
 import 'package:samskritam/features/lessons/controller/lesson_controller.dart';
-import 'package:samskritam/models/lesson_info.dart';
+import 'package:samskritam/features/lessons/screens/lessons_screen.dart';
+import 'package:samskritam/models/lesson_home_info.dart';
 
 class LessonsHomeScreen extends ConsumerStatefulWidget {
   const LessonsHomeScreen({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
   dynamic t;
 
   void tryReadingMapData() {
-    text = ref.watch(lessonControllerProvider).getLessons().toString();
+    text = ref.watch(lessonControllerProvider).getHomeLessons().toString();
     setState(() {});
   }
 
@@ -35,7 +36,6 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
           setState(() {
             text = data.toString();
           });
-          print(data);
         },
         onError: (e) => print("Error getting document: $e"),
       );
@@ -61,7 +61,7 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
           SizedBox(height: 24,),
           Expanded(
             child: StreamBuilder(
-              stream: ref.read(lessonControllerProvider).getLessons(),
+              stream: ref.read(lessonControllerProvider).getHomeLessons(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const LoadingScreen();
@@ -96,7 +96,7 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
   }
 }
 
-List<Widget> lessonTile(List<LessonInfo>? lessons, List? completedLessons,
+List<Widget> lessonTile(List<LessonHomeInfo>? lessons, List? completedLessons,
     BuildContext context) {
   List<Widget> ite = [];
 
@@ -133,22 +133,25 @@ List<Widget> lessonTile(List<LessonInfo>? lessons, List? completedLessons,
 
 
 
-Widget lessonImage(LessonInfo? lessonData, Function() onPressed,
+Widget lessonImage(LessonHomeInfo? lessonData, Function() onPressed,
     BuildContext context, bool isCompletedLesson) {
   if (lessonData == null) {
     return const SizedBox();
   }
 
   if (lessonData.type == "image") {
-    return SizedBox(
-      width: 200,
-      height: 200,
-      child: CachedNetworkImage(imageUrl: lessonData.imageUrl!),
+    return Padding(
+      padding: EdgeInsets.only(bottom:8),
+      child: SizedBox(
+        width: 200,
+        height: 200,
+        child: CachedNetworkImage(imageUrl: lessonData.imageUrl!),
+      ),
     );
   } else {
     return InkWell(
       onTap: () {
-        print("test");
+        Navigator.pushNamed(context, LessonScreen.routeName, arguments: lessonData.lessonId);
       },
       child: Opacity(
         opacity: isCompletedLesson ? .5 : 1,

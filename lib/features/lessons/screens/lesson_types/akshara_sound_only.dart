@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samskritam/common/widgets/custom_button.dart';
+import 'package:samskritam/common/widgets/custom_text_style.dart';
 
 class Akshara extends StatelessWidget {
   final Map<dynamic, dynamic>? lessonData;
@@ -17,9 +18,7 @@ class Akshara extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(lessonData?["text"], style: const TextStyle(
-                fontSize: 180
-              ),),
+              CustomSamskritText(text: lessonData?["text"]== null?"" : lessonData!["text"], fontSize: 180),
               listenToAudioButton(onPressed: (){}, icon: const Icon(Icons.volume_up_rounded), context: context),
               const SizedBox(height: 32,),
               // Text("Example"),

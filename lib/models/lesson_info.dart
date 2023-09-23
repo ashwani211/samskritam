@@ -1,29 +1,40 @@
-class LessonInfo {
-  final int? lessonNo;
-  final int? cellCount;
-  final String? name;
-  final String? imageUrl;
+class Lesson {
   final String? type;
+  final String? text;
+  final String? sound;
+  final dynamic time;
+  final String? imageUrl;
+  final String? question;
+  final Map<String,dynamic>? choices;
+  final Map<String,dynamic>? table;
 
-  LessonInfo({this.lessonNo, this.cellCount, this.name, this.imageUrl, this.type});
+  Lesson({this.type, this.text, this.sound, this.time, this.imageUrl, this.question, this.choices, this.table});
+
 
   Map<String, dynamic> toMap() {
     return {
-      "lesson_no" : lessonNo??-1,
-      "cell_count" : cellCount??1,
-      "name" : name??"",
-      "image" : imageUrl,
       "type" : type,
+      "text" : text,
+      "sound" : sound,
+      "time" : time,
+      "image" : imageUrl,
+      "question" : question,
+      "choices" : choices,
+      "table" : table,
     };
   }
 
-  factory LessonInfo.fromMap(Map<String, dynamic> map){
-    return LessonInfo(
-      lessonNo: map["lesson_no"],
-      cellCount: map["cell_count"],
-      name: map["name"],
+  factory Lesson.fromMap(Map<String, dynamic> map){
+    return Lesson(
+      type: map["type"],
+      text: map["text"],
+      sound: map["sound"],
+      time: map["time"]?? DateTime.fromMicrosecondsSinceEpoch(0),
       imageUrl: map["image"],
-      type: map["type"]
+      question: map["question"],
+      choices: map["choices"],
+      table: map["table"],
+      
     );
   }
 }

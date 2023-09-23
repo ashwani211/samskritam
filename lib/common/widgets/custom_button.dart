@@ -150,7 +150,7 @@ Widget myElevatedButton({required Function()? onPressed,
 required String text, required BuildContext context, 
 Color? backgroundColor, Color? iconColor, 
 double? width, double? height, double? iconSize, double? fontSize,
-double? borderRadius }){
+double? borderRadius, String? fontFamily }){
 
   // ElevatedButtonTheme(data: data, child: child
   double screenWidth = MediaQuery.of(context).size.width;
@@ -166,7 +166,7 @@ double? borderRadius }){
       // surfaceTintColor: MaterialStatePropertyAll(Colors.red),
       // shadowColor: MaterialStatePropertyAll(Colors.red),
       foregroundColor: MaterialStatePropertyAll(Colors.grey[100]),
-      textStyle: MaterialStatePropertyAll(TextStyle(fontSize: fontSize??40,)),
+      textStyle: MaterialStatePropertyAll(TextStyle(fontSize: fontSize??40, fontFamily: fontFamily?? "Samskrit")),
       shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius??4) ))
     ),
     child: Text(text),

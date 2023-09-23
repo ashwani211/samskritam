@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:samskritam/features/lessons/repository/lesson_repository.dart';
+import 'package:samskritam/models/lesson_home_info.dart';
 import 'package:samskritam/models/lesson_info.dart';
 
 final lessonControllerProvider = Provider((ref) {
@@ -14,7 +14,12 @@ class LessonController {
 
   LessonController(this.lessonRepository, this.ref);
 
-  Stream<List<LessonInfo>> getLessons()  {
-    return lessonRepository.getLessons();
+  Stream<List<LessonHomeInfo>> getHomeLessons()  {
+    return lessonRepository.getHomeLessons();
   }
+
+  Stream<List<Lesson>> getLessons({required String lessonId})  {
+    return lessonRepository.getLessons(lessonId);
+  }
+
 }

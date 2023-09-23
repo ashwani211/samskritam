@@ -39,6 +39,25 @@ Widget CustomText({
   );
 }
 
+Widget CustomSamskritText({
+  required String text,
+  double? fontSize,
+  Color? color,
+  TextAlign? textAlign,
+  FontWeight? fontWeight,
+}) {
+  return Text(
+    text,
+    textAlign: textAlign??null,
+    style: TextStyle(
+      fontSize: fontSize?? 18,
+      color: color?? null,
+      fontWeight: fontWeight?? null,
+      fontFamily: "Samskrit",
+    ),
+  );
+}
+
 Widget CustomSmallText({
   required String text,
   double? fontSize,

@@ -80,6 +80,10 @@ Widget CustomCrownImage() {
 }
 
 Widget CustomProfileImage() {
+  return Image.asset("assets/images/appbar/profile.png");
+}
+
+Widget CustomProfileCircularImage() {
   return Image.asset("assets/images/profile-default.png");
 }
 

@@ -11,8 +11,13 @@ class LoadingScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SpinKitPouringHourGlassRefined(color: customPrimaryBlueColor, size: 80,),
-          SizedBox(height: 80,)
+          SpinKitPouringHourGlassRefined(
+            color: customPrimaryBlueColor,
+            size: 80,
+          ),
+          SizedBox(
+            height: 80,
+          )
         ],
       ),
     );
