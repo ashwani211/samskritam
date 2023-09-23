@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:samskritam/common/widgets/custom_bottom_navigationbars.dart';
 import 'package:samskritam/features/dictionary/screens/dictionary_screen.dart';
 import 'package:samskritam/features/leaderboard/screens/leaderboard_screen.dart';
-import 'package:samskritam/features/social/screens/leaderboard_screen.dart';
+import 'package:samskritam/features/social/screens/social_screen.dart';
 import 'package:samskritam/features/stories/screens/story_home.dart';
 
 import 'features/lessons/screens/lessons_homescreen.dart';

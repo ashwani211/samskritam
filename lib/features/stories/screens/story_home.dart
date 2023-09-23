@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samskritam/common/widgets/custom_appbars.dart';
+import 'package:samskritam/common/widgets/loading_screen.dart';
 import 'package:samskritam/common/widgets/profile_pic.dart';
 
 class StoryHomeScreen extends StatelessWidget {
@@ -15,9 +16,7 @@ class StoryHomeScreen extends StatelessWidget {
           size: 32,
         ),
       ),
-      body: Column(
-        children: [],
-      ),
+      body: LoadingScreen(),
     );
   }
 }

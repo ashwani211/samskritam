@@ -26,6 +26,13 @@ class _LessonScreenState extends State<LessonScreen> {
   ScrollController? _lessonController;
 
   @override
+  void dispose() {
+    _lessonController?.dispose();
+    super.dispose();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
     _lessonController = ScrollController();
     double width = MediaQuery.of(context).size.width;
@@ -90,6 +97,7 @@ class _LessonScreenState extends State<LessonScreen> {
                       var lessonData = snapshot.data;
                       
                       return ListView.builder(
+                          
                           physics: const NeverScrollableScrollPhysics(),
                           controller: _lessonController,
                           itemCount:
@@ -118,10 +126,10 @@ class _LessonScreenState extends State<LessonScreen> {
                                       duration: const Duration(milliseconds: 300),
                                       curve: Curves.decelerate);
                                   print(_lessonController.toString());
-                                  // setState(() {
-                                  //   sliderValue =
-                                  //       ((i + 1) / (lessonData.length - 2)) * 100;
-                                  // });
+                                  setState(() {
+                                    sliderValue =
+                                        ((i + 1) / (lessonData.length - 2)) * 100;
+                                  });
                                 },
                               ),
                             );

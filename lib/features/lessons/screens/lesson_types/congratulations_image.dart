@@ -9,12 +9,14 @@ class LessonCongratulationsImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    // return Text("test");
     return Column(
       children: [
         Expanded(
           child: SizedBox(
             height: height,
-            child: Image.asset("images/congrats.gif", fit: BoxFit.fitHeight,),
+            width: 200,
+            child: Image.asset("assets/images/congratulation.png", fit: BoxFit.fitWidth,),
             // child: Image.network(imageLink ??
             //     "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Error.svg/1200px-Error.svg.png",
             //   // loadingBuilder: (context, child, loadingProgress) => const Center(child: Text("loading"),),
