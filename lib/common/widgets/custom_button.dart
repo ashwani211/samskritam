@@ -167,7 +167,7 @@ double? borderRadius, String? fontFamily }){
       // shadowColor: MaterialStatePropertyAll(Colors.red),
       foregroundColor: MaterialStatePropertyAll(Colors.grey[100]),
       textStyle: MaterialStatePropertyAll(TextStyle(fontSize: fontSize??40, fontFamily: fontFamily?? "Samskrit")),
-      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius??4) ))
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius??32) ))
     ),
     child: Text(text),
   );

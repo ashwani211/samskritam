@@ -126,10 +126,10 @@ class _LessonScreenState extends State<LessonScreen> {
                                       duration: const Duration(milliseconds: 300),
                                       curve: Curves.decelerate);
                                   print(_lessonController.toString());
-                                  setState(() {
-                                    sliderValue =
-                                        ((i + 1) / (lessonData.length - 2)) * 100;
-                                  });
+                                  // setState(() {
+                                  //   sliderValue =
+                                  //       ((i + 1) / (lessonData.length - 2)) * 100;
+                                  // });
                                 },
                               ),
                             );

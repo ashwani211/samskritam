@@ -25,7 +25,7 @@ class SocialScreen extends StatelessWidget {
             );
           }
           return SizedBox(
-            height: 396,
+            height: 412,
             child: Column(
               children: [
                 Container(height: 2, color: Colors.grey,),
