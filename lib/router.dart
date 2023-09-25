@@ -10,9 +10,12 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
         builder: (context) => LoginScreen(),
       );
     case LessonScreen.routeName:
-      final lessonId = settings.arguments as String;
+      final arguments = settings.arguments as Map<String, dynamic>;
+      final lessonId = arguments["lesson_id"];
+      final lessonInfoTitle = arguments["info_title"];
+      final lessonInfoDetails = arguments["info_details"];
       return MaterialPageRoute(
-        builder: (context) => LessonScreen(lessonId: lessonId,),
+        builder: (context) => LessonScreen(lessonId: lessonId,lessonInfoTitle: lessonInfoTitle,lessonInfoDetails: lessonInfoDetails,),
       );
     default:
       return MaterialPageRoute(

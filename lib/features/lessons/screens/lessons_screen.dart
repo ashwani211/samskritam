@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:samskritam/common/config/apptheme/theme_colors.dart';
 import 'package:samskritam/common/utils/dialog/alert_dialog.dart';
 import 'package:samskritam/common/widgets/custom_button.dart';
 import 'package:samskritam/common/widgets/loading_screen.dart';
@@ -9,35 +8,60 @@ import 'package:samskritam/models/lesson_info.dart';
 
 import 'route_lesson.dart';
 
-class LessonScreen extends StatefulWidget {
+final sliderValueProvider = StateProvider((ref) => 3.toDouble());
+
+class LessonScreen extends ConsumerStatefulWidget {
   static const String routeName = "lesson-screen";
 
   final String lessonId;
-  const LessonScreen({super.key, required this.lessonId});
+  final String? lessonInfoTitle;
+  final String? lessonInfoDetails;
+  const LessonScreen(
+      {super.key,
+      required this.lessonId,
+      this.lessonInfoTitle,
+      this.lessonInfoDetails});
 
   // final Map<dynamic,dynamic>? lessonData = setting[a];
 
   @override
-  State<LessonScreen> createState() => _LessonScreenState();
+  ConsumerState<LessonScreen> createState() => _LessonScreenState();
 }
 
-class _LessonScreenState extends State<LessonScreen> {
-  double sliderValue = 3;
+class _LessonScreenState extends ConsumerState<LessonScreen> {
+  // double sliderValue = 3;
   ScrollController? _lessonController;
+  double listOffset = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // ref.invalidate(sliderValueProvider);
+    Future.delayed(Duration(seconds: 0), () {
+      ref.invalidate(sliderValueProvider);
+    });
+    _lessonController = ScrollController();
+  }
 
   @override
   void dispose() {
     _lessonController?.dispose();
     super.dispose();
+    try {
+      ref.invalidate(sliderValueProvider);
+    } catch (e) {
+      print(e.toString());
+    }
+    // Future.delayed(Duration(seconds: 1), (){
 
+    //   ref.invalidate(sliderValueProvider);});
   }
 
   @override
   Widget build(BuildContext context) {
-    _lessonController = ScrollController();
+    _lessonController = ScrollController(initialScrollOffset: listOffset);
     double width = MediaQuery.of(context).size.width;
-    // var args = (ModalRoute.of(context)?.settings.arguments ?? {}) as Map;
-    // final Map<dynamic, dynamic>? lessonData = args["data"];
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -51,98 +75,115 @@ class _LessonScreenState extends State<LessonScreen> {
                           context,
                           "Exiting...",
                           // "Do you want to quit?", () => goToHomePage(context));
-                          "Do you want to quit?",
-                          () {});
+                          "Do you want to quit?", () {
+                        Navigator.of(context).pop();
+                      });
                     },
                     icon: const Icon(Icons.cancel)),
                 Expanded(
-                  child: sliderButton(
-                      value: sliderValue,
-                      divisions: 1,
-                      // divisions: lessonData?.length ?? 1,
-                      onChanged: (change) {},
-                      // onChanged: (change) {
-                      //   setState(() {
-                      //     sliderValue = change;
-                      //   });
-                      // },
-                      context: context),
+                  child: MySlider(),
+                  // child: sliderButton(
+                  //     value: sliderValue,
+                  //     divisions: 1,
+                  //     onChanged: (change) {},
+                  //     context: context),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    simpleAlertDialog(
+                        context,
+                        widget.lessonInfoTitle ?? "Error!",
+                        widget.lessonInfoDetails ?? "Data Unavailable...");
+                  },
                   icon: Icon(
-                    Icons.info_outline,
-                    color: customDullWhite,
+                    Icons.info,
+                    // color: customDullWhite,
                   ),
                 ),
-                // const Text(
-                //   "8",
-                //   style: TextStyle(color: Colors.red),
-                // ),
                 const SizedBox(
                   width: 8,
                 )
               ]),
             ),
-            Consumer(builder: (context, ref, _) {
-              return Expanded(
-                child: StreamBuilder(
-                    stream: ref
-                        .read(lessonControllerProvider)
-                        .getLessons(lessonId: widget.lessonId),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const LoadingScreen();
-                      }
-                      var lessonData = snapshot.data;
-                      
-                      return ListView.builder(
-                          
-                          physics: const NeverScrollableScrollPhysics(),
-                          controller: _lessonController,
-                          itemCount:
-                              (lessonData == null) ? 1 : lessonData.length - 1,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, i) {
+            Expanded(
+              child: StreamBuilder(
+                  stream: ref
+                      .read(lessonControllerProvider)
+                      .getLessons(lessonId: widget.lessonId),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const LoadingScreen();
+                    }
+                    var lessonData = snapshot.data;
+                    int lessonLength =
+                        (lessonData == null) ? 0 : lessonData.length;
 
-                            if (lessonData == null) {
-                              return SizedBox(
-                                width: width - 16,
-                                child: const LoadingScreen(),
-                              );
-                            }
+                    if (lessonLength == 0) {
+                      return LoadingScreen();
+                    }
 
-                            Lesson? currLesson = lessonData[i + 1];
-                            return Container(
+                    return ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        controller: _lessonController,
+                        itemCount: lessonLength,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, i) {
+                          if (lessonData == null) {
+                            return SizedBox(
                               width: width - 16,
-                              height: 40,
-                              // color: Colors.blue,
-                              margin: const EdgeInsets.all(8),
-                              child: RouteLesson(
-                                lesson: currLesson,
-                                nextQuestion: () {
-                                  _lessonController?.animateTo(
-                                      _lessonController!.offset + width,
-                                      duration: const Duration(milliseconds: 300),
-                                      curve: Curves.decelerate);
-                                  print(_lessonController.toString());
-                                  // setState(() {
-                                  //   sliderValue =
-                                  //       ((i + 1) / (lessonData.length - 2)) * 100;
-                                  // });
-                                },
-                              ),
+                              child: const LoadingScreen(),
                             );
-                          });
+                          }
 
-                      // return Text(snapshot.data![0].toMap().toString());
-                    }),
-              );
-            }),
+                          Lesson? currLesson = lessonData[i];
+                          return Container(
+                            width: width - 16,
+                            height: 40,
+                            // color: Colors.blue,
+                            margin: const EdgeInsets.all(8),
+                            child: RouteLesson(
+                              lesson: currLesson,
+                              nextQuestion: () async {
+                                listOffset = _lessonController!.offset + width;
+                                ref.read(sliderValueProvider.notifier).state =
+                                    ((i + 1) / (lessonLength - 1)) * 100;
 
+                                await _lessonController?.animateTo(
+                                    _lessonController!.offset + width,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.decelerate);
+
+                                setState(() {});
+                              },
+                            ),
+                          );
+                        });
+
+                    // return Text(snapshot.data![0].toMap().toString());
+                  }),
+            ),
           ],
         ),
       ),
     );
+  }
+}
+
+class MySlider extends ConsumerStatefulWidget {
+  const MySlider({super.key});
+
+  @override
+  ConsumerState<MySlider> createState() => _MySliderState();
+}
+
+class _MySliderState extends ConsumerState<MySlider> {
+  @override
+  Widget build(BuildContext context) {
+    final sliderValue = ref.watch(sliderValueProvider);
+    return sliderButton(
+        value: sliderValue,
+        divisions: 100,
+        onChanged: (change) {},
+        context: context);
   }
 }

@@ -58,7 +58,9 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
       body: Column(
         children: [
           CustomLowerAppBar(),
-          SizedBox(height: 24,),
+          SizedBox(
+            height: 24,
+          ),
           Expanded(
             child: StreamBuilder(
               stream: ref.read(lessonControllerProvider).getHomeLessons(),
@@ -80,8 +82,7 @@ class _LessonsHomeScreenState extends ConsumerState<LessonsHomeScreen> {
                           crossAxisCount: 6,
                           mainAxisSpacing: 4,
                           crossAxisSpacing: 4,
-                          children:
-                              lessonTile(snapshot.data, [], context),
+                          children: lessonTile(snapshot.data, [], context),
                         ),
                       ),
                     ),
@@ -114,14 +115,14 @@ List<Widget> lessonTile(List<LessonHomeInfo>? lessons, List? completedLessons,
     //     ),
     //   );
     // } else {
-      w = StaggeredGridTile.count(
-        crossAxisCellCount: s,
-        mainAxisCellCount: 2,
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: lessonImage(lessons[i], () => null, context, false),
-        ),
-      );
+    w = StaggeredGridTile.count(
+      crossAxisCellCount: s,
+      mainAxisCellCount: 2,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        child: lessonImage(lessons[i], () => null, context, false),
+      ),
+    );
     // }
     ite.add(w);
   }
@@ -131,8 +132,6 @@ List<Widget> lessonTile(List<LessonHomeInfo>? lessons, List? completedLessons,
   return ite;
 }
 
-
-
 Widget lessonImage(LessonHomeInfo? lessonData, Function() onPressed,
     BuildContext context, bool isCompletedLesson) {
   if (lessonData == null) {
@@ -141,7 +140,7 @@ Widget lessonImage(LessonHomeInfo? lessonData, Function() onPressed,
 
   if (lessonData.type == "image") {
     return Padding(
-      padding: EdgeInsets.only(bottom:8),
+      padding: EdgeInsets.only(bottom: 8),
       child: SizedBox(
         width: 200,
         height: 200,
@@ -151,7 +150,12 @@ Widget lessonImage(LessonHomeInfo? lessonData, Function() onPressed,
   } else {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, LessonScreen.routeName, arguments: lessonData.lessonId);
+        Navigator.pushNamed(context, LessonScreen.routeName, arguments: {
+          "lesson_id": lessonData.lessonId,
+          "info_title": lessonData.infoTitle,
+          "info_details": lessonData.infoDetails,
+          
+        });
       },
       child: Opacity(
         opacity: isCompletedLesson ? .5 : 1,
@@ -162,18 +166,21 @@ Widget lessonImage(LessonHomeInfo? lessonData, Function() onPressed,
             children: [
               Expanded(
                 child: ClipOval(
-                  child: CachedNetworkImage(imageUrl: lessonData.imageUrl.toString()),
+                  child: CachedNetworkImage(
+                      imageUrl: lessonData.imageUrl.toString()),
                 ),
               ),
               const SizedBox(
                 height: 4,
               ),
-              Text(lessonData.name!, style: TextStyle(fontFamily: "Samskrit"),),
+              Text(
+                lessonData.name!,
+                style: TextStyle(fontFamily: "Samskrit"),
+              ),
             ],
           ),
         ),
       ),
     );
   }
-  
 }
